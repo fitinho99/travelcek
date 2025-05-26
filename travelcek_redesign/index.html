@@ -35,17 +35,18 @@
   </header>
 
 
-<section class="hero">
-  <div class="container hero-row">
-    <img src="images/logo.jpg" alt="Logo Travelcek" class="nav-logo" />
-    <div class="hero-text">
-      <h1>¿Qué tipo de viaje estás buscando?</h1>
-      <div class="tipo-viaje-tabs">
-  <button class="tab active" data-tipo="paquetes">Paquetes</button>
-  <button class="tab" data-tipo="vuelos">Vuelos</button>
-  <button class="tab" data-tipo="hoteles">Hoteles</button>
-  <button class="tab" data-tipo="vueloHotel">Vuelo+Hotel</button>
-</div>
+<div class="hero-row">
+  <img src="images/logo.jpg" alt="Logo Travelcek" class="nav-logo" />
+  <div class="hero-text">
+    <h1>¿Qué tipo de viaje estás buscando?</h1>
+
+    <div class="tipo-viaje-tabs">
+      <button class="tab active">Paquetes</button>
+      <button class="tab">Vuelos</button>
+      <button class="tab">Hoteles</button>
+      <button class="tab">Vuelo+Hotel</button>
+    </div>
+
 
 <!-- Opciones adicionales: ida/vuelta (se muestran solo si es vuelos o vuelo+hotel) -->
 <div class="opciones-ida-vuelta" style="display: none; justify-content: center; gap: 20px; margin-bottom: 15px;">
@@ -63,19 +64,7 @@
     </div>
   </div>
 </section>
-
-<datalist id="paises">
-  <option value="Argentina">
-  <option value="Brasil">
-  <option value="España">
-  <option value="Italia">
-  <option value="Francia">
-  <option value="México">
-  <option value="Estados Unidos">
-  <option value="Tailandia">
-  <option value="Japón">
-</datalist>
-
+  
 <datalist id="Tipo">
   <option value="Paquete">
   <option value="Vuelos">
