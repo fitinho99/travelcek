@@ -152,6 +152,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
   text-align: center;
 }
 
@@ -200,23 +201,23 @@ body {
   margin-top: 20px;
 }
 
-.search-bar-horizontal input,
-.search-bar-horizontal select {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 160px;
+.search-bar-horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
 }
 
+.search-bar-horizontal input,
+.search-bar-horizontal select,
 .search-bar-horizontal button {
-  background-color: #00796b;
-  color: white;
-  padding: 10px 20px;
-  border: none;
+  padding: 10px;
+  font-size: 1rem;
   border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
+  border: 1px solid #ccc;
+  width: 100%;
 }
 
 .redes-sociales {
@@ -526,30 +527,33 @@ body {
     margin: 10px 0;
   }
 
-   .hero-row {
+     .hero-row {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     text-align: left;
   }
 
+
   .nav-logo {
     height: 120px;
   }
-.search-bar-horizontal {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  width: 100%;
-  padding: 10px;
-}
+ .search-bar-horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-.search-bar-horizontal input,
-.search-bar-horizontal select,
-.search-bar-horizontal button {
-  flex: 1 1 150px;
-  max-width: 100%;
+  .search-bar-horizontal input,
+  .search-bar-horizontal select,
+  .search-bar-horizontal button {
+    flex: 1 1 150px;
+    max-width: 160px;
+  }
+
+  .search-bar-horizontal button {
+    max-width: 120px;
+  }
 }
 
   .tipo-viaje-tabs {
