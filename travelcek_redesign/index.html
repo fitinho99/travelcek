@@ -35,18 +35,17 @@
   </header>
 
 
-<div class="hero-row">
-  <img src="images/logo.jpg" alt="Logo Travelcek" class="nav-logo" />
-  <div class="hero-text">
-    <h1>¿Qué tipo de viaje estás buscando?</h1>
-
-    <div class="tipo-viaje-tabs">
-      <button class="tab active">Paquetes</button>
-      <button class="tab">Vuelos</button>
-      <button class="tab">Hoteles</button>
-      <button class="tab">Vuelo+Hotel</button>
-    </div>
-
+<section class="hero">
+  <div class="container hero-row">
+    <img src="images/logo.jpg" alt="Logo Travelcek" class="nav-logo" />
+    <div class="hero-text">
+      <h1>¿Qué tipo de viaje estás buscando?</h1>
+      <div class="tipo-viaje-tabs">
+  <button class="tab active" data-tipo="paquetes">Paquetes</button>
+  <button class="tab" data-tipo="vuelos">Vuelos</button>
+  <button class="tab" data-tipo="hoteles">Hoteles</button>
+  <button class="tab" data-tipo="vueloHotel">Vuelo+Hotel</button>
+</div>
 
 <!-- Opciones adicionales: ida/vuelta (se muestran solo si es vuelos o vuelo+hotel) -->
 <div class="opciones-ida-vuelta" style="display: none; justify-content: center; gap: 20px; margin-bottom: 15px;">
@@ -54,8 +53,16 @@
   <label><input type="radio" name="tipoVuelo" value="soloIda"> Solo Ida</label>
 </div>
       <div class="search-bar-horizontal">
-        <input list="paises" id="origen" placeholder="País de Origen" />
-        <input list="paises" id="destino" placeholder="País de Destino" />
+   <div class="input-group">
+  <input type="text" id="origen" placeholder="Ciudad de origen" autocomplete="off" />
+  <div id="sugerencias-origen" class="sugerencias"></div>
+</div>
+
+<div class="input-group">
+  <input type="text" id="destino" placeholder="Ciudad de destino" autocomplete="off" />
+  <div id="sugerencias-destino" class="sugerencias"></div>
+</div>
+
         <input list="meses" id="mes" placeholder="Periodo de viaje" />
         <input type="number" id="adultos" min="1" placeholder="Adultos" />
         <input type="number" id="ninos" min="0" placeholder="Niños" />
@@ -64,7 +71,8 @@
     </div>
   </div>
 </section>
-  
+
+
 <datalist id="Tipo">
   <option value="Paquete">
   <option value="Vuelos">
@@ -320,6 +328,38 @@ function cerrarPopup(event) {
     popup.style.display = "none";
   }
 }
+</script>
+
+<script>
+async function buscarCiudades(query, contenedorId) {
+  const res = await fetch(`https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=5&namePrefix=${query}`, {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '3a44615ecfmsh5e960c0f50b8393p16803fjsn24ed43ebbbf5',
+      'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+    }
+  });
+  const data = await res.json();
+  const contenedor = document.getElementById(contenedorId);
+  contenedor.innerHTML = '';
+  data.data.forEach(ciudad => {
+    const div = document.createElement('div');
+    div.textContent = `${ciudad.city}, ${ciudad.country}`;
+    div.classList.add('opcion-ciudad');
+    div.onclick = () => {
+      document.getElementById(contenedorId === 'sugerencias-origen' ? 'origen' : 'destino').value = `${ciudad.city}, ${ciudad.country}`;
+      contenedor.innerHTML = '';
+    };
+    contenedor.appendChild(div);
+  });
+}
+
+document.getElementById('origen').addEventListener('input', e => {
+  if (e.target.value.length > 2) buscarCiudades(e.target.value, 'sugerencias-origen');
+});
+document.getElementById('destino').addEventListener('input', e => {
+  if (e.target.value.length > 2) buscarCiudades(e.target.value, 'sugerencias-destino');
+});
 </script>
 
 </body>
