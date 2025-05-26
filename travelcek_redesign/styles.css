@@ -152,7 +152,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
   text-align: center;
 }
 
@@ -201,23 +200,23 @@ body {
   margin-top: 20px;
 }
 
-.search-bar-horizontal {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 800px;
-  margin-top: 20px;
-}
-
 .search-bar-horizontal input,
-.search-bar-horizontal select,
-.search-bar-horizontal button {
+.search-bar-horizontal select {
   padding: 10px;
   font-size: 1rem;
-  border-radius: 5px;
   border: 1px solid #ccc;
-  width: 100%;
+  border-radius: 5px;
+  width: 160px;
+}
+
+.search-bar-horizontal button {
+  background-color: #00796b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .redes-sociales {
@@ -515,7 +514,8 @@ body {
 .opcion-ciudad:hover {
   background-color: #f1f1f1;
 }
-@media (min-width: 768px) {
+
+@media (max-width: 768px) {
   .topbar-content {
     flex-direction: column;
     gap: 10px;
@@ -527,34 +527,28 @@ body {
     margin: 10px 0;
   }
 
-     .hero-row {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    text-align: left;
+  .hero-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
   }
-
 
   .nav-logo {
     height: 120px;
   }
- .search-bar-horizontal {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+
+  .search-bar-horizontal {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
   }
 
   .search-bar-horizontal input,
   .search-bar-horizontal select,
   .search-bar-horizontal button {
-    flex: 1 1 150px;
-    max-width: 160px;
+    width: 100%;
+    max-width: 100%;
   }
-
-  .search-bar-horizontal button {
-    max-width: 120px;
-  }
-}
 
   .tipo-viaje-tabs {
     flex-direction: column;
@@ -601,3 +595,4 @@ body {
     overflow-y: auto;
   }
 }
+
